@@ -13,6 +13,21 @@ class Asignatura{
     public function getId() {
         return $this->id;
     }
+    public function getNombre() {
+        return $this->nombre;
+    }
+    public function getCreditos(){
+        return $this->creditos;
+    }
+    public function setId(int $id): void{
+        $this->id = $id;
+    }
+    public function setNombre(string $nombre): void{
+        $this->nombre = $nombre;
+    }
+    public function setCreditos(int $creditos): void{
+        $this->creditos = $creditos;
+    }
 
     public static function crearAsignaturasDeMuestra() {
         return [

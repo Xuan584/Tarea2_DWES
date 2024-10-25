@@ -38,6 +38,6 @@ class Miembro{
     }
 
     public function __toString(): string {
-        return "{$this->nombre} {$this->apellidos}, {$this->email}";
+        return "{$this->nombre}, {$this->apellidos}, {$this->email}";
     }
 }

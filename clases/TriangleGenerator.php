@@ -1,16 +1,16 @@
 <?php
-
 class TriangleGenerator {
 
-    public function generateTriangle(int $altura): string {
+    public static function generateTriangle(int $altura): string {
         $output = "<pre>"; 
+        $cont = 0;
 
         // Bucle para las filas
-        for ($i = 0; $i < $altura; $i++) {
+        for ($i = 0; $cont < $altura; $i++) {
             // Verifica si la fila tiene un número impar de asteriscos (solo dibujamos si es impar)
             if (!($i % 2)) {
                 // Bucle para generar los espacios en blanco antes de los asteriscos
-                for ($j = 0; $j < ($altura - $i) / 2; $j++) {
+                for ($j = 0; $j < ($altura - ($cont+1)); $j++) {
                     $output .= "&nbsp;";
                 }
 
@@ -21,6 +21,7 @@ class TriangleGenerator {
 
                 // Agrega un salto de línea al final de cada fila
                 $output .= "<br>";
+                $cont++;
             }
         }
 
