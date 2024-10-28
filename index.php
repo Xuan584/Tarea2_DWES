@@ -29,7 +29,7 @@ $asignaturas = Asignatura::crearAsignaturasDeMuestra();
     <h2>Profesores</h2>
     <ul>
         <?php foreach ($profesores as $profesor): ?>
-            <li><?php echo "Nombre: ". $profesor->getNombre() . ' ' . $profesor->getApellidos() .", Email: ". $profesor->getEmail(); ?></li>
+            <li><?php echo "Nombre: ". $profesor->getNombre() . " " . $profesor->getApellidos() .", Email: ". $profesor->getEmail(); ?></li>
         <?php endforeach; ?>
     </ul>
 
@@ -39,5 +39,20 @@ $asignaturas = Asignatura::crearAsignaturasDeMuestra();
             <li><?php echo "Nombre: ". $asignatura->getNombre(). ", Créditos: ". $asignatura->getCreditos();?></li>
         <?php endforeach; ?>
     </ul>
+
+    <?php
+        $alumnosJovenes = array_filter($alumnos, function($alumno) {
+            return $alumno->getEdad() <= 23;
+        });
+    ?>
+
+    <h2>Alumnos <= 23</h2>
+    <ul>
+        <?php foreach ($alumnosJovenes as $alumno): ?>
+            <li><?php echo "Nombre: ". $alumno->getNombre() . ' ' . $alumno->getApellidos(). ", Email: ". $alumno->getEmail(); ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h2>Alumnos con al menos dos asignaturas: </h2>
 </body>
 </html>

@@ -10,6 +10,9 @@ class Alumno extends Miembro {
         $this->cursoAbonado = $cursoAbonado;
     }
     
+    public function getEdad(){
+        return $this->edad;
+    }
 
     public function abonarCurso() {
         $this->cursoAbonado = true;
@@ -20,7 +23,7 @@ class Alumno extends Miembro {
         foreach ($this->asignaturas as $asig) {
             // En caso de que coincida es que ya está matriculado en la asignatura
             if ($asig->getId() == $asignatura->getId()) {
-                echo "El alumno ya está matriculado en la asignatura ". $asignatura->getNombre .".\n";
+                echo "El alumno ya está matriculado en la asignatura ". $asignatura->getNombre() .".\n";
                 return; 
             }
         }
