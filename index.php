@@ -53,6 +53,40 @@ $asignaturas = Asignatura::crearAsignaturasDeMuestra();
         <?php endforeach; ?>
     </ul>
 
-    <h2>Alumnos con al menos dos asignaturas: </h2>
+    <?php
+    // Filtro para obtener alumnos con al menos dos asignaturas
+    $alumnosVariasAsignaturas = array_filter($alumnos, function($alumno) {
+        return count($alumno->getAsignaturas()) >= 2;
+    });
+    ?>
+
+    <h2>Alumnos con al menos dos asignaturas:</h2>
+    <ul>
+        <?php foreach ($alumnosVariasAsignaturas as $alumno): ?>
+            <li><?php echo "Nombre: " . $alumno->getNombre() . ' ' . $alumno->getApellidos() . ", Email: " . $alumno->getEmail(); ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+
+    <?php
+    // Filtra asignaturas con al menos un alumno matriculado
+    $asignaturaCursada = array_filter($asignaturas, function($asignatura) use ($alumnos) {
+        foreach ($alumnos as $alumno) {
+            if (in_array($asignatura, $alumno->getAsignaturas())) {
+                return true;
+            }
+        }
+        return false;
+    });
+    ?>
+
+    <h2>Asignaturas con algún alumno matriculado: </h2>
+    <ul>
+        <?php foreach ($asignaturaCursada as $asignatura): ?>
+            <li><?php echo "Asignatura: " . $asignatura->getNombre() . ", Créditos: " . $asignatura->getCreditos(); ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+
 </body>
 </html>

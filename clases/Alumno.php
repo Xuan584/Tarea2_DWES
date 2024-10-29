@@ -9,7 +9,11 @@ class Alumno extends Miembro {
         $this->edad = $edad;
         $this->cursoAbonado = $cursoAbonado;
     }
-    
+
+    public function getAsignaturas() {
+        return $this->asignaturas;
+    }
+
     public function getEdad(){
         return $this->edad;
     }
@@ -19,37 +23,31 @@ class Alumno extends Miembro {
     }
 
     public function matricularEnAsignatura($asignatura) {
-        // Foreach para recorrer las asignaturas
+        // Verificar si el alumno ya está matriculado en la asignatura
         foreach ($this->asignaturas as $asig) {
-            // En caso de que coincida es que ya está matriculado en la asignatura
-            if ($asig->getId() == $asignatura->getId()) {
-                echo "El alumno ya está matriculado en la asignatura ". $asignatura->getNombre() .".\n";
+            if ($asig->getId() === $asignatura->getId()) {
+                echo "El alumno ya está matriculado en la asignatura " . $asignatura->getNombre() . ".\n";
                 return; 
             }
         }
+        // Matricular al alumno en la asignatura
         $this->asignaturas[] = $asignatura;
-        echo "El alumno ha sido matriculado en la asignatura ". $asignatura->getNombre .".\n";
+        echo "El alumno ha sido matriculado en la asignatura " . $asignatura->getNombre() . ".\n";
     }
 
     public function bajaEnAsignatura($asignatura) {
-        // Uso array_search para buscar la asignatura por su ID dentro del array
-        $index = array_search($asignatura, $this->asignaturas, true);
-    
-        // Si no encuentra la asignatura, indico que no está matriculado
-        if ($index === false) {
-            echo "El alumno no está matriculado en la asignatura ". $asignatura->getNombre() .".<br>";
-            return;
+        // Buscar el índice de la asignatura en el array por ID
+        foreach ($this->asignaturas as $index => $asig) {
+            if ($asig->getId() === $asignatura->getId()) {
+                // Eliminar la asignatura si se encuentra
+                unset($this->asignaturas[$index]);
+                $this->asignaturas = array_values($this->asignaturas); // Reindexar el array
+                echo "El alumno ha sido dado de baja de la asignatura " . $asignatura->getNombre() . ".<br>";
+                return;
+            }
         }
-    
-        // Si se encuentra la asignatura, la elimino con unset
-        unset($this->asignaturas[$index]);
-    
-        // Reindexamos el array
-        $this->asignaturas = array_values($this->asignaturas);
-    
-        echo "El alumno ha sido dado de baja de la asignatura ". $asignatura->getNombre() .".<br>";
+        echo "El alumno no está matriculado en la asignatura " . $asignatura->getNombre() . ".<br>";
     }
-    
 
     public static function crearAlumnosDeMuestra() {
         return [
