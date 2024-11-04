@@ -26,13 +26,13 @@ class Alumno extends Miembro {
         // Verificar si el alumno ya está matriculado en la asignatura
         foreach ($this->asignaturas as $asig) {
             if ($asig->getId() === $asignatura->getId()) {
-                echo "El alumno ya está matriculado en la asignatura " . $asignatura->getNombre() . ".\n";
+                // echo "El alumno ya está matriculado en la asignatura " . $asignatura->getNombre() . "<br>";
                 return; 
             }
         }
         // Matricular al alumno en la asignatura
         $this->asignaturas[] = $asignatura;
-        echo "El alumno ha sido matriculado en la asignatura " . $asignatura->getNombre() . ".\n";
+        // echo "El alumno ha sido matriculado en la asignatura " . $asignatura->getNombre() . "<br>";
     }
 
     public function bajaEnAsignatura($asignatura) {

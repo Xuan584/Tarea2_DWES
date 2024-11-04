@@ -52,6 +52,23 @@ $asignaturas = Asignatura::crearAsignaturasDeMuestra();
             <li><?php echo "Nombre: ". $alumno->getNombre() . ' ' . $alumno->getApellidos(). ", Email: ". $alumno->getEmail(); ?></li>
         <?php endforeach; ?>
     </ul>
+    <?php
+        $alumnos[0]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[1]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[1]->matricularEnAsignatura($asignaturas[1]);  
+        $alumnos[2]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[2]->matricularEnAsignatura($asignaturas[2]);  
+        $alumnos[3]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[4]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[4]->matricularEnAsignatura($asignaturas[1]);  
+        $alumnos[4]->matricularEnAsignatura($asignaturas[2]);  
+        $alumnos[5]->matricularEnAsignatura($asignaturas[0]);  
+        $alumnos[6]->matricularEnAsignatura($asignaturas[1]);  
+        $alumnos[6]->matricularEnAsignatura($asignaturas[1]);  
+        $alumnos[7]->matricularEnAsignatura($asignaturas[2]);  
+        $alumnos[8]->matricularEnAsignatura($asignaturas[1]);  
+        $alumnos[9]->matricularEnAsignatura($asignaturas[0]);
+    ?>
 
     <?php
     // Filtro para obtener alumnos con al menos dos asignaturas
