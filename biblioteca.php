@@ -31,6 +31,7 @@ $libros = [
 </head>
 <body>
 
+<!-- Imprimimos la información de todos los libros dentro de una tabla que recorremos con un foreach-->
 <h2>Información de todos los libros</h2>
 <table border="2px" style="border-collapse: collapse;">
     <tr>
@@ -49,6 +50,8 @@ $libros = [
     <?php endforeach; ?>
 </table>
 
+<!-- Imprimimos la información de todos los libros dentro de una tabla que recorremos con un foreach pero en este caso solo si 
+ pertenecen a Desarrollo Web con un if-->
 <h2>Libros de la categoría Desarrollo Web</h2>
 <ol>
     <?php foreach ($libros as $libro) : ?>

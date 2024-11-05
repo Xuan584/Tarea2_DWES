@@ -8,6 +8,7 @@ class Profesor extends Miembro{
         $this->asignatura = $asignatura;
     }
 
+    // Profesores de Prueba
     public static function crearProfesoresDeMuestra(){
         return[
             new Profesor(1, "Steve", "Wozdniak", "steve@apple.com", "DWES"),

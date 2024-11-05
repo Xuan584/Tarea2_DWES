@@ -49,6 +49,7 @@ class Alumno extends Miembro {
         echo "El alumno no está matriculado en la asignatura " . $asignatura->getNombre() . ".<br>";
     }
 
+    // Alumnos de muestra
     public static function crearAlumnosDeMuestra() {
         return [
             new Alumno(1, "Laura", "Martínez", "laura.martinez@email.com", 22),

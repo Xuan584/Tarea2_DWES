@@ -29,6 +29,7 @@ class Asignatura{
         $this->creditos = $creditos;
     }
 
+    // Asignaturas de Prueba
     public static function crearAsignaturasDeMuestra() {
         return [
             new Asignatura(1, 'DWES', 7),
